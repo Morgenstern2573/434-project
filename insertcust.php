@@ -17,15 +17,26 @@ if (isset($_POST['save_btn'])){
     $crotch = test($_POST['crotch']);
     $chest = test($_POST['chest']);
 
-    $sql = "INSERT INTO customers(CustomerName, CustomerPhone, Sex) VALUES ('$customerName', '$customerPhone',
+    if($family == 1){
+        $sql = "INSERT INTO customers(CustomerName, CustomerPhone, Sex) VALUES ('$customerName', '$customerPhone',
         '$gender')";
-    $sql2 = "INSERT INTO measurements(CustomerName, Bust,
-     H_L, F_L, U_B, Shoulder, Waist, H_S, Hips, Crotch, Chest) VALUES ('$customerName', '$bustSize',
+        $result = mysqli_query($con, $sql);
+        $uniqueID = mysqli_insert_id($con);
+        $sql3 = "INSERT INTO family_accounts(CustomerName, CustomerID) VALUES ('$customerName', '$uniqueID')";
+        $result2 = mysqli_query($con, $sql3);
+    }else{
+        $sql = "INSERT INTO customers(CustomerName, CustomerPhone, Sex) VALUES ('$customerName', '$customerPhone',
+        '$gender')";
+        $result = mysqli_query($con, $sql);
+        $uniqueID = mysqli_insert_id($con);
+    }
+    $sql2 = "INSERT INTO measurements(CustomerID, CustomerName, Bust,
+     H_L, F_L, U_B, Shoulder, Waist, H_S, Hips, Crotch, Chest) VALUES ('$uniqueID', '$customerName', '$bustSize',
     '$halfLength', '$fullLength', '$underBust', '$shoulder', '$waist', '$handSleeve',
     '$hips', '$crotch', '$chest')";
-
-    $result = mysqli_query($con, $sql);
     $result1 = mysqli_query($con, $sql2);
+    
+    
     if($result){
         echo "<h3>data stored successfully.</h3>";
         header("Refresh:3; url=customers.html", true, 303);
