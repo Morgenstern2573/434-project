@@ -5,7 +5,7 @@ CREATE TABLE LOGIN (
 );
 
 -- Login details
-INSERT INTO LOGIN(UserEmail, UserPassword) VALUES ('123456@gmail.com', '123456');
+INSERT INTO LOGIN(UserEmail, UserPassword) VALUES ('iyekolobusayomi@gmail.com', 'busayo');
 
 -- CUSTOMERS table
 CREATE TABLE CUSTOMERS (
@@ -17,7 +17,7 @@ CREATE TABLE CUSTOMERS (
 
 --  FAMILY_ACCOUNTS table with the CustomerID as a foreign key
 CREATE TABLE FAMILY_ACCOUNTS (
-    FamilyID INT PRIMARY KEY AUTO_INCREMENT,
+    FamilyName VARCHAR(50) PRIMARY KEY ,
     CustomerName VARCHAR(50) NOT NULL,
     CustomerID INT NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES CUSTOMERS(CustomerID),

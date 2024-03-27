@@ -27,20 +27,20 @@
                     </li> 
       
                     <li class="nav-item mb-1"> 
-                        <a href="#"> 
+                        <a href="customers.php"> 
                             <i class="fa-solid fa-table"></i>
                             View Customers
                         </a> 
                     </li> 
                     <li class="nav-item mb-1"> 
-                        <a href="family.html"> 
+                        <a href="#"> 
                             <i class="fa-solid fa-table"></i>
                             View Family Accounts
                         </a> 
                     </li>
 
                     <li class="nav-item mb-1"> 
-                        <a href="measurements.html"> 
+                        <a href="measurements.php"> 
                             <i class="fa-solid fa-table"></i> 
                             View Measurements
                         </a> 
@@ -73,18 +73,29 @@
                 </div> 
                 <div class="p-4"> 
                     <nav style="--bs-breadcrumb-divider:'>';font-size:14px" id="nav"> 
-                       <h2>CUSTOMERS</h2>
+                       <h2>FAMILY ACCOUNTS</h2>
                     </nav> <hr>
                     <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">CustomerID</th>
+                            <th scope="col">Family Name</th>
                             <th scope="col">Customer Name</th>
-                            <th scope="col">CustomerPhone</th>
-                            <th scope="col">Sex</th>
+                            <th scope="col">CustomerID</th>
                           </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                            require_once("showfamily.php");
+                            foreach ($families as $family) :
+                            ?>
+
+                            <tr>
+                                <td><?= $family['FamilyName'] ?></td>
+                                <td><?= $family['CustomerName'] ?></td>
+                                <td><?= $family['CustomerID'] ?></td>
+                            </tr>
+
+                            <?php endforeach; ?>
                           
                         </tbody>
                       </table>
