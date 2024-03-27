@@ -51,6 +51,13 @@
                             Add new a customer
                         </a> 
                     </li> 
+
+                <li class="nav-item mb-1"> 
+                  <a href="searchcustomer.html"> 
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                      Search Customers
+                  </a> 
+                </li> 
     
                     <li class="nav-item mb-1"> 
                         <a id="logout-modal-trigger"> 
