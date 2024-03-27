@@ -1,6 +1,5 @@
 <?php 
-
-    session_destroy();
-    header("Location: login.html");
+session_destroy();
+header("Location: login.html");
 
 ?>
