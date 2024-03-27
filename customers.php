@@ -27,20 +27,20 @@
                     </li> 
       
                     <li class="nav-item mb-1"> 
-                        <a href="customers.html"> 
+                        <a href="#"> 
                             <i class="fa-solid fa-table"></i>
                             View Customers
                         </a> 
                     </li> 
                     <li class="nav-item mb-1"> 
-                        <a href="#"> 
+                        <a href="family.php"> 
                             <i class="fa-solid fa-table"></i>
                             View Family Accounts
                         </a> 
                     </li>
 
                     <li class="nav-item mb-1"> 
-                        <a href="measurements.html"> 
+                        <a href="measurements.php"> 
                             <i class="fa-solid fa-table"></i> 
                             View Measurements
                         </a> 
@@ -73,18 +73,29 @@
                 </div> 
                 <div class="p-4"> 
                     <nav style="--bs-breadcrumb-divider:'>';font-size:14px" id="nav"> 
-                       <h2>FAMILY ACCOUNTS</h2>
+                       <h2>CUSTOMERS</h2>
                     </nav> <hr>
                     <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">FamilyID</th>
-                            <th scope="col">Customer Name</th>
                             <th scope="col">CustomerID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">CustomerPhone</th>
+                            <th scope="col">Sex</th>
                           </tr>
                         </thead>
                         <tbody>
-                          
+                          <?php
+                            require_once('showcustomer.php');
+                            foreach ($customers as $customer) : 
+                           ?>
+                           <tr>
+                            <td><?= $customer["CustomerID"] ?></td>
+                            <td><?= $customer["CustomerName"] ?></td>
+                            <td><?= $customer["CustomerPhone"] ?></td>
+                            <td><?= $customer["Sex"] ?></td>
+                           </tr>
+                           <?php endforeach; ?>
                         </tbody>
                       </table>
                 </div>

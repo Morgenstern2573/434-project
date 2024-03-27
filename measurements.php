@@ -27,14 +27,14 @@
                     </li> 
       
                     <li class="nav-item mb-1"> 
-                        <a href="customers.html"> 
+                        <a href="customers.php"> 
                             <i class="fa-solid fa-table"></i>
                             View Customers
                         </a> 
                     </li> 
 
                     <li class="nav-item mb-1"> 
-                        <a href="family.html"> 
+                        <a href="family.php"> 
                             <i class="fa-solid fa-table"></i>
                             View Family Accounts
                         </a> 
@@ -94,7 +94,25 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
+                          <?php 
+                            require_once("showmeasurements.php");
+                            foreach ($measurements as $measurement) : ?>
+
+                            <tr>
+                                <td><?= $measurement["CustomerID"] ?></td>
+                                <td><?= $measurement["CustomerName"] ?></td>
+                                <td><?= $measurement["Bust"] ?></td>
+                                <td><?= $measurement["H_L"] ?></td>
+                                <td><?= $measurement["F_L"] ?></td>
+                                <td><?= $measurement["U_B"] ?></td>
+                                <td><?= $measurement["Shoulder"] ?></td>
+                                <td><?= $measurement["Waist"] ?></td>
+                                <td><?= $measurement["H_S"] ?></td>
+                                <td><?= $measurement["Hips"] ?></td>
+                                <td><?= $measurement["Crotch"] ?></td>
+                                <td><?= $measurement["Chest"] ?></td>
+                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                       </table>
                 </div>

@@ -6,6 +6,7 @@ if (isset($_POST['save_btn'])){
     $customerPhone = test($_POST['phone']);
     $gender = test($_POST['gender']);
     $family = test($_POST['family']);
+    $familyName = test($_POST['familyname']);
     $bustSize = test($_POST['bust']);
     $halfLength = test($_POST['hl']);
     $fullLength = test($_POST['fl']);
@@ -22,7 +23,7 @@ if (isset($_POST['save_btn'])){
         '$gender')";
         $result = mysqli_query($con, $sql);
         $uniqueID = mysqli_insert_id($con);
-        $sql3 = "INSERT INTO family_accounts(CustomerName, CustomerID) VALUES ('$customerName', '$uniqueID')";
+        $sql3 = "INSERT INTO family_accounts(FamilyName, CustomerName, CustomerID) VALUES ('$familyName', '$customerName', '$uniqueID')";
         $result2 = mysqli_query($con, $sql3);
     }else{
         $sql = "INSERT INTO customers(CustomerName, CustomerPhone, Sex) VALUES ('$customerName', '$customerPhone',
@@ -39,7 +40,7 @@ if (isset($_POST['save_btn'])){
     
     if($result){
         echo "<h3>data stored successfully.</h3>";
-        header("Refresh:3; url=customers.html", true, 303);
+        header("Refresh:3; url=customers.php", true, 303);
     }else{
         echo "<h3>data not stored successfully.</h3>";
         header("Refresh:3; url=newcust.html", true, 303);
